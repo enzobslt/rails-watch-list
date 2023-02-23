@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h1><%= @list.name %></h1>
+
+<div class="container mt-5">
+  <h1>- Ajoute un film à la Liste -</h1>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie %>
+    <%= f.input :comment %>
+    <%= f.submit class: "btn btn-primary mt-4" %>
+  <% end %>
+</div>
+
+  <%= link_to "Ajouter un film", new_list_bookmark_path(@list) %>
+  <%= link_to "Retour au Menu", lists_path %>
+  <%= link_to "Delete #{@list.name}", list_path(@list), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
+
+<div class="container mt-5">
+  <ul>
+      <% @bookmarks.each do |bookmark| %>
+      <h3><%= bookmark.movie.title %></h3>
+      <p><%= "#{bookmark.movie.rating}, #{bookmark.movie.poster_url}" %></p>
+      <p><%= bookmark.movie.overview %></p>
+      <p><%= bookmark.comment %></p>
+      <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are your sure?" } %>
+      <% end %>
+  </ul>
+</div>
