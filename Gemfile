@@ -8,6 +8,9 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 # gem "image_processing", "~> 1.2"
 # gem "kredis"
 # gem "redis", "~> 4.0"
+gem "dotenv-rails", groups: [:development, :test]
+gem "simple_form", github: "heartcombo/simple_form"
+gem "sassc-rails"
 gem 'faker'
 gem "autoprefixer-rails"
 gem "bootsnap", require: false
